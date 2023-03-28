@@ -17,7 +17,7 @@ def get_questionnaire(quiz_id):
 
 @app.route('/quiz/api/v1.0/questions/', methods = ["GET"])
 def get_questions():
-    return jsonify(questions=[(q.to_json()) for q in Question.query.all()])
+    return jsonify([(q.to_json()) for q in Question.query.all()])
 
 
 @app.route('/quiz/api/v1.0/question/<int:quest_id>', methods = ['GET'])

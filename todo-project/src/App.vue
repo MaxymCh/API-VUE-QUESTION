@@ -14,6 +14,7 @@ export default{
     return data;
     },
     methods: {
+    /*
     add: function(){
         let text = this.tache.trim();
         if(text){
@@ -23,9 +24,9 @@ export default{
         
     },
     suppr($event){this.questions.splice($event, 1) // remove it from array
-    },
+    },*/
     async fetchquestions(){
-          let response = await fetch('https://jsonplaceholder.typicode.com/questions/');
+          let response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
           this.questions = await response.json();
         }
     },
@@ -51,20 +52,20 @@ export default{
                 
                 <li v-for="(item, indexx) in questions">
                     <TodoItem 
-                    :todo="item"
+                    :question="item"
                     :index="indexx"
-                    @suppr="suppr($event)">
-                    
-                </TodoItem> 
+                    >
+                    </TodoItem>  <!--@suppr="suppr($event)">-->
                 </li>
             </ol>
+            <!--
             <em> Ajouter une question</em>
             <input v-model="tache" type="text" @keyup.enter="add"/>
             <span class="input-group-btn">
                 <button v-on:click="add()"
                 class="btn btn-default"
                 type="button">Ajouter</button>
-            </span>
+            </span>-->
         </div>
       </template>
 
