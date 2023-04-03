@@ -14,6 +14,10 @@ def get_questionnaire(quiz_id):
     q = Questionnaire.query.get(quiz_id)
     return q.to_json()
 
+@app.route('/quiz/api/v1.0/questionnaire/questions/<int:quiz_id>', methods = ["GET"])
+def get_questionnaire_question(quiz_id):
+    q = Questionnaire.query.get(quiz_id)
+    return jsonify([(question.to_json()) for question in q.questions])
 
 @app.route('/quiz/api/v1.0/questions/', methods = ["GET"])
 def get_questions():

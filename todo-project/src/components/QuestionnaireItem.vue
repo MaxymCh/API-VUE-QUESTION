@@ -50,6 +50,11 @@ export default {
             <input class="btn btn-danger" value="Supprimer" type="button" @click="suppr()">
 
         </span>
+        <span class="input-group-btn">
+          <router-link :to="/questions/+questionnaire.id">Voir mes questions</router-link>
+
+        </span>
+        
         <!-- 
         <span class="input-group-btn">
             <button @click="edit()" v-if="!question.editing">Modifier</button>

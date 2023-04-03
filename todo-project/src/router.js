@@ -3,7 +3,7 @@ import QuestionList from "./components/QuestionList.vue";
 import QuestionnaireList from "./components/QuestionnaireList.vue";
 
 const routes = [
-  { path: "/questions", component: QuestionList },
+  { path: "/questions/:idQuestionnaire", component: QuestionList },
   { path: "/questionnaires", component: QuestionnaireList },
 ];
 

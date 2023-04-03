@@ -17,6 +17,7 @@ class Questionnaire(db.Model):
             'url': url_for('get_questionnaire', 
                 quiz_id=self.id, _external=True),
             'name': self.name,
+            'id': self.id,
             'questions': 
             [ q.to_json()['url'] for q in self.questions ]
         }

@@ -1,12 +1,15 @@
 
 <script>
 import TodoItem from './QuestionItem.vue'
+import { useRoute } from "vue-router"
+import { onMounted } from 'vue';
 
 
 let data = {
 questions: [],
 title: 'Mes questions',
-newItem: ''
+newItem: '',
+id: '',
 };
 
 export default{
@@ -14,7 +17,14 @@ export default{
   data() {
     return data;
     },
-    methods: {
+    /*
+  setup(){
+   
+    onMounted(() => {
+      
+    })
+  },*/
+  methods: {
   suppr: async function(index) {
     // Récupérer l'ID de la question à supprimer
     const questionId = this.questions[index].id;
@@ -33,14 +43,16 @@ export default{
       console.error("Erreur lors de la suppression de la question.");
     }
     
-  },async fetchquestions(){
-          let response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
+  },async fetchquestions(idQuestionnaire){
+          let response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/questionnaire/questions/${idQuestionnaire}`);
           this.questions = await response.json();
         }
     },
     mounted(){
-        this.fetchquestions();
-      }
+      const route = useRoute();
+      this.id = route.params.idQuestionnaire
+      this.fetchquestions(this.id);
+    }
 }
 
 /*
@@ -64,6 +76,7 @@ export default{
         crossorigin="anonymous">
   <div class="container">
             <h2> {{ title }} </h2>
+            <p> id  {{ id }} </p>
             <ol>
                 
                 <li v-for="(item, indexx) in questions">
