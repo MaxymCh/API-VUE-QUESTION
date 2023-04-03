@@ -25,7 +25,7 @@ def get_question(quest_id):
     q = Question.query.get(quest_id)
     return q.to_json()
 
-@app.route('/quizz/api/v1.0/question/<int:quest_id>', methods = ['DELETE'])
+@app.route('/quiz/api/v1.0/question/<int:quest_id>', methods = ['DELETE'])
 def delete_question(quest_id):
     q = Question.query.get(quest_id)
     if q is None:
@@ -35,7 +35,7 @@ def delete_question(quest_id):
     return jsonify( { 'result': True } )
 
 
-@app.route('/quizz/api/v1.0/question/', methods = ['POST'])
+@app.route('/quiz/api/v1.0/question/', methods = ['POST'])
 def create_question():
     if not request.json or not 'title' in request.json or not 'type' in request.json or not 'idQuestionnaire' in request.json:
         abort(400)
@@ -59,7 +59,7 @@ def create_question():
     db.session.commit()
     return jsonify( { 'questionnaire': q.to_json() } ), 201
 
-@app.route('/quizz/api/v1.0/question/<int:quest_id>', methods = ['PUT'])
+@app.route('/quiz/api/v1.0/question/<int:quest_id>', methods = ['PUT'])
 def update_question(quest_id):
     q = Question.query.get(quest_id)
     if q is None:
