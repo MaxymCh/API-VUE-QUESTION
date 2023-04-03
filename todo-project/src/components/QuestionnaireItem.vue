@@ -11,6 +11,9 @@ export default {
     };
   },*/
   methods:{
+    suppr: function() {
+    this.$emit("suppr", this.index);
+  }
     /*
     edit: function() {
         this.question.editing = true;
@@ -44,7 +47,7 @@ export default {
             </div>
         </label>
         <span class="input-group-btn">
-            <input class="btn btn-danger" value="Supprimer" type="button" > <!-- @click="suppr()"-->
+            <input class="btn btn-danger" value="Supprimer" type="button" @click="suppr()">
 
         </span>
         <!-- 

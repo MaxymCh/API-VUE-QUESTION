@@ -25,6 +25,24 @@ export default{
     },
     suppr($event){this.questions.splice($event, 1) // remove it from array
     },*/
+    suppr: async function(index) {
+    // Récupérer l'ID de la question à supprimer
+    const questionnaireId = this.questionnaires[index].id;
+
+    // Supprimer la question de la liste locale
+    this.questionnaires.splice(index, 1);
+
+    // Envoyer une requête DELETE au serveur
+    const response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/questionnaire/${questionnaireId}`, {
+      method: 'DELETE',
+    });
+
+    // Vérifier si la suppression a réussi
+    const result = await response.json();
+    if (!result.result) {
+      console.error("Erreur lors de la suppression de la question.");
+    }},
+    
     async fetchquestionnaires(){
           let response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questionnaires/');
           this.questionnaires = await response.json();
@@ -54,6 +72,7 @@ export default{
                     <QuestionnaireItem 
                     :questionnaire="item"
                     :index="indexx"
+                    @suppr="suppr($event)"
                     >
                     </QuestionnaireItem>  <!--@suppr="suppr($event)">-->
                 </li>
