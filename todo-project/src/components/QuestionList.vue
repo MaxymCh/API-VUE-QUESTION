@@ -1,60 +1,59 @@
-
 <script>
-import TodoItem from './QuestionItem.vue'
+import TodoItem from './QuestionItem.vue';
 
-
-let data = {
-questions: [],
-title: 'Mes questions',
-newItem: ''
-};
-
-export default{
+export default {
   components: { TodoItem },
   data() {
-    return data;
+    return {
+      questions: [],
+      title: 'Mes questions',
+      newQuestion: {
+        title: '',
+        type: 'SimpleQuestion',
+        firstAlternative: '',
+        secondAlternative: '',
+        thirdAlternative: '',
+        fourthAlternative: '',
+      },
+    };
+  },
+  methods: {
+    async add() {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.newQuestion),
+      };
+      const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/question/', requestOptions);
+      const data = await response.json();
+      this.questions.push(data.questionnaire);
+      this.newQuestion.title = '';
+      this.newQuestion.type = 'SimpleQuestion';
+      this.newQuestion.firstAlternative = '';
+      this.newQuestion.secondAlternative = '';
+      this.newQuestion.thirdAlternative = '';
+      this.newQuestion.fourthAlternative = '';
     },
-    methods: {
-  suppr: async function(index) {
-    // Récupérer l'ID de la question à supprimer
-    const questionId = this.questions[index].id;
-
-    // Supprimer la question de la liste locale
-    this.questions.splice(index, 1);
-
-    // Envoyer une requête DELETE au serveur
-    const response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/question/${questionId}`, {
-      method: 'DELETE',
-    });
-
-    // Vérifier si la suppression a réussi
-    const result = await response.json();
-    if (!result.result) {
-      console.error("Erreur lors de la suppression de la question.");
-    }
-    
-  },async fetchquestions(){
-          let response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
-          this.questions = await response.json();
-        }
-    },
-    mounted(){
-        this.fetchquestions();
+    async suppr(index) {
+      const questionId = this.questions[index].id;
+      this.questions.splice(index, 1);
+      const response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/question/${questionId}`, {
+        method: 'DELETE',
+      });
+      const result = await response.json();
+      if (!result.result) {
+        console.error('Erreur lors de la suppression de la question.');
       }
-}
-
-/*
-    add: function(){
-        let text = this.tache.trim();
-        if(text){
-            this.questions.push({ title: text, checked:false, editing:false})
-            this.tache = ""
-        }
-        
     },
-    suppr($event){this.questions.splice($event, 1) // remove it from array
+    async fetchquestions() {
+      const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
+      this.questions = await response.json();
     },
-  */
+  },
+  mounted() {
+    this.fetchquestions();
+  },
+};
 </script>
 
 <template>
@@ -74,14 +73,11 @@ export default{
                 ></TodoItem>
                 </li>
             </ol>
-            <!--
-            <em> Ajouter une question</em>
-            <input v-model="tache" type="text" @keyup.enter="add"/>
             <span class="input-group-btn">
-                <button v-on:click="add()"
-                class="btn btn-default"
-                type="button">Ajouter</button>
-            </span>-->
+  <router-link to="/question/add" class="btn btn-default">Ajouter une question</router-link>
+</span>
+
+
         </div>
       </template>
 
