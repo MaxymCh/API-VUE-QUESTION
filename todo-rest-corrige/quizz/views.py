@@ -3,9 +3,9 @@ from flask import render_template, jsonify, abort, request, make_response, url_f
 from .models import *
 
 
-@app.route('/quiz/api/v1.0/questionnaire/', methods = ["GET"])
+@app.route('/quiz/api/v1.0/questionnaires/', methods = ["GET"])
 def get_questionnaires():
-    return jsonify(questionnaires=[(q.to_json()) for q in Questionnaire.query.all()])
+    return jsonify([(q.to_json()) for q in Questionnaire.query.all()])
 
 
 @app.route('/quiz/api/v1.0/questionnaire/<int:quiz_id>', methods = ['GET'])

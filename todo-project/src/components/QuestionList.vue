@@ -1,6 +1,5 @@
-
 <script>
-import TodoItem from './components/TodoItem.vue'
+import TodoItem from './TodoItem.vue'
 
 
 let data = {
@@ -15,35 +14,7 @@ export default{
     return data;
     },
     methods: {
-  suppr: async function(index) {
-    // Récupérer l'ID de la question à supprimer
-    const questionId = this.questions[index].id;
-
-    // Supprimer la question de la liste locale
-    this.questions.splice(index, 1);
-
-    // Envoyer une requête DELETE au serveur
-    const response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/question/${questionId}`, {
-      method: 'DELETE',
-    });
-
-    // Vérifier si la suppression a réussi
-    const result = await response.json();
-    if (!result.result) {
-      console.error("Erreur lors de la suppression de la question.");
-    }
-    
-  },async fetchquestions(){
-          let response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
-          this.questions = await response.json();
-        }
-    },
-    mounted(){
-        this.fetchquestions();
-      }
-}
-
-/*
+    /*
     add: function(){
         let text = this.tache.trim();
         if(text){
@@ -53,8 +24,21 @@ export default{
         
     },
     suppr($event){this.questions.splice($event, 1) // remove it from array
+    },*/
+    async fetchquestions(){
+          let response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
+          this.questions = await response.json();
+        }
     },
-  */
+    mounted(){
+        this.fetchquestions();
+      }
+
+  
+}
+
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 </script>
 
 <template>
@@ -67,11 +51,11 @@ export default{
             <ol>
                 
                 <li v-for="(item, indexx) in questions">
-                  <TodoItem
-                  :question="item"
-                  :index="indexx"
-                  @suppr="suppr($event)"
-                ></TodoItem>
+                    <TodoItem 
+                    :question="item"
+                    :index="indexx"
+                    >
+                    </TodoItem>  <!--@suppr="suppr($event)">-->
                 </li>
             </ol>
             <!--
@@ -96,11 +80,3 @@ export default{
 }
 
 </style>
-
-<template>
-  <nav>
-    <router-link to="/questions">Questions</router-link>
-    <router-link to="/questionnaires">Questionnaires</router-link>
-  </nav>
-  <router-view></router-view>
-</template>

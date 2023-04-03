@@ -9,10 +9,13 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 npm create vite@2 IUT vite@latest Perso
 
-Html d'un coté et js de l'autre
+Html d'un cotï¿½ et js de l'autre
 
-main.js Notre point d'entrée pour script
+main.js Notre point d'entrï¿½e pour script
 
 Modifie pas index et main
 
-{{  msg }} interpollé
+{{  msg }} interpollï¿½
+
+
+npm install vue-router@next
