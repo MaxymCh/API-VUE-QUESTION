@@ -7,6 +7,8 @@ const routes = [
   { path: "/questions/:idQuestionnaire", component: QuestionList },
   { path: "/questionnaires", component: QuestionnaireList },
   { path: "/question/add", component: CreateQuestion },
+  { path: "/question/edit/:idQuestion", component: EditQuestion },
+
 ];
 
 const router = createRouter({
