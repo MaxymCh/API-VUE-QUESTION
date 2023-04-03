@@ -10,20 +10,11 @@ export default {
       editTitle: this.question.title,
     };
   },*/
-  methods:{
-    /*
-    edit: function() {
-        this.question.editing = true;
-    },
-    applyEdit: function() {
-        this.question.title = this.editText;
-        this.question.editing = false;
-    },
-    suppr: function() {
+  methods: {
+  suppr: function() {
     this.$emit("suppr", this.index);
-    }*/
-
-  },
+  }
+},
   /*
   emits: ["suppr"]*/
 }
@@ -44,7 +35,7 @@ export default {
             </div>
         </label>
         <span class="input-group-btn">
-            <input class="btn btn-danger" value="Supprimer" type="button" > <!-- @click="suppr()"-->
+          <input class="btn btn-danger" value="Supprimer" type="button" @click="suppr()">
 
         </span>
         <!-- 
