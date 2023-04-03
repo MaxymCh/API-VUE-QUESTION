@@ -24,12 +24,6 @@ export default {
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
      <div class="checkbox">
         <label>
-        <!-- 
-            <input type="checkbox"
-                v-model="question.checked">
-            <div v-if="question.editing" class="editing">
-                <input type="text" v-model="editText" @keyup.enter="applyEdit()" @blur="applyEdit()" />
-            </div>-->
             <div>
                 {{ question.title }}
             </div>

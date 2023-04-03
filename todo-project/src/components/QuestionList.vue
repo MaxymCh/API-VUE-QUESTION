@@ -1,4 +1,3 @@
-
 <script>
 import TodoItem from './QuestionItem.vue'
 import { useRoute } from "vue-router"
@@ -12,11 +11,24 @@ newItem: '',
 id: '',
 };
 
-export default{
+
+export default {
   components: { TodoItem },
   data() {
-    return data;
-    },
+    return {
+      questions: [],
+      title: 'Mes questions',
+      newQuestion: {
+        title: '',
+        type: 'SimpleQuestion',
+        firstAlternative: '',
+        secondAlternative: '',
+        thirdAlternative: '',
+        fourthAlternative: '',
+      },
+    };
+  },
+
     /*
   setup(){
    
@@ -64,9 +76,15 @@ export default{
         }
         
     },
-    suppr($event){this.questions.splice($event, 1) // remove it from array
+    async fetchquestions() {
+      const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questions/');
+      this.questions = await response.json();
     },
-  */
+  },
+  mounted() {
+    this.fetchquestions();
+  },
+};*/
 </script>
 
 <template>
@@ -87,14 +105,11 @@ export default{
                 ></TodoItem>
                 </li>
             </ol>
-            <!--
-            <em> Ajouter une question</em>
-            <input v-model="tache" type="text" @keyup.enter="add"/>
             <span class="input-group-btn">
-                <button v-on:click="add()"
-                class="btn btn-default"
-                type="button">Ajouter</button>
-            </span>-->
+  <router-link to="/question/add" class="btn btn-default">Ajouter une question</router-link>
+</span>
+
+
         </div>
       </template>
 
