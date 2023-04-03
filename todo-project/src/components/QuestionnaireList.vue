@@ -14,17 +14,7 @@ export default{
     return data;
     },
     methods: {
-    /*
-    add: function(){
-        let text = this.tache.trim();
-        if(text){
-            this.questions.push({ title: text, checked:false, editing:false})
-            this.tache = ""
-        }
-        
-    },
-    suppr($event){this.questions.splice($event, 1) // remove it from array
-    },*/
+
     suppr: async function(index) {
     // Récupérer l'ID de la question à supprimer
     const questionnaireId = this.questionnaires[index].id;
@@ -74,17 +64,10 @@ export default{
                     :index="indexx"
                     @suppr="suppr($event)"
                     >
-                    </QuestionnaireItem>  <!--@suppr="suppr($event)">-->
+                    </QuestionnaireItem>
                 </li>
             </ol>
-            <!--
-            <em> Ajouter une question</em>
-            <input v-model="tache" type="text" @keyup.enter="add"/>
-            <span class="input-group-btn">
-                <button v-on:click="add()"
-                class="btn btn-default"
-                type="button">Ajouter</button>
-            </span>-->
+
         </div>
       </template>
 
@@ -96,6 +79,89 @@ export default{
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.checkbox > div {
+  flex-basis: 100%;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #6c757d;
+}
+
+ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin-left: 10px;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 10px;
+}
+
+.btn-group button {
+  margin: 5px 0;
 }
 
 </style>
