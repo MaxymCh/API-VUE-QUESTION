@@ -40,6 +40,7 @@ class Question(db.Model):
 
     def to_json(self):
         json_quest = {
+            'id': self.id,
             'url': url_for('get_question',
              quest_id=self.id, _external=True),
             'questionnaire_url': url_for('get_questionnaire'
@@ -47,7 +48,7 @@ class Question(db.Model):
                  _external=True),
             'title': self.title,
             'question_type': self.question_type,
-            'question':self.json_content()
+            'reponses':self.json_content()
             }
         return json_quest
     __mapper_args__ = {
