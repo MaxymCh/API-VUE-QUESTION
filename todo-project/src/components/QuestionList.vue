@@ -106,7 +106,9 @@ export default {
                 </li>
             </ol>
             <span class="input-group-btn">
-  <router-link to="/question/add" class="btn btn-default">Ajouter une question</router-link>
+              <!-- <router-link :to="{ name: '/question/add', params: { idQuestionnaire: id }}" class="btn btn-default">Ajouter une question</router-link>-->
+<router-link to="/question/add" class="btn btn-default">Ajouter une question</router-link>
+
 </span>
 
 

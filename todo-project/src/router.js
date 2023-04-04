@@ -6,8 +6,16 @@ import CreateQuestion from "./components/CreateQuestion.vue";
 const routes = [
   { path: "/questions/:idQuestionnaire", component: QuestionList },
   { path: "/questionnaires", component: QuestionnaireList },
-  { path: "/question/add", component: CreateQuestion },
+  { path: "/question/add", component: CreateQuestion },/*
+  {
+    path: '/question/add',
+    name: 'question-add',
+    component: CreateQuestion,
+    props: true,
+  },*/
 ];
+
+
 
 const router = createRouter({
   history: createWebHistory(),

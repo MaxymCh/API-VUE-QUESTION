@@ -1,5 +1,11 @@
 <script>
 export default {
+  props: {
+    idQuestionnaire: {
+      type: int,
+      required: true,
+    },
+  },
   data() {
     return {
       questions: [],
@@ -7,6 +13,7 @@ export default {
       newQuestion: {
         title: '',
         type: 'SimpleQuestion',
+        idQuestionnaire: this.idQuestionnaire,
         firstAlternative: '',
         secondAlternative: '',
         thirdAlternative: '',
@@ -30,7 +37,7 @@ export default {
       this.newQuestion.secondAlternative = '';
       this.newQuestion.thirdAlternative = '';
       this.newQuestion.fourthAlternative = '';
-    },}
+    },},
 };
 </script><template>
   <div class="container">
