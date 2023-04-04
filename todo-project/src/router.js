@@ -7,10 +7,12 @@ import EditQuestion from "./components/EditQuestion.vue";
 const routes = [
   { path: "/questions/:idQuestionnaire", component: QuestionList },
   { path: "/", component: QuestionnaireList },
-  { path: "/question/add", component: CreateQuestion },
   { path: "/question/edit/:idQuestion", component: EditQuestion },
-
+  { path: "/questionnaires", component: QuestionnaireList },
+  { path: '/question/add', name: 'question-add',  component: CreateQuestion,   props: true, },
 ];
+
+
 
 const router = createRouter({
   history: createWebHistory(),

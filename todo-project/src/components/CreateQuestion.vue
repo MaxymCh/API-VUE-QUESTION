@@ -1,5 +1,11 @@
 <script>
 export default {
+  props: {
+    idQuestionnaire: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
       questions: [],
@@ -7,6 +13,7 @@ export default {
       newQuestion: {
         title: '',
         type: 'SimpleQuestion',
+        idQuestionnaire: this.idQuestionnaire,
         firstAlternative: '',
         secondAlternative: '',
         thirdAlternative: '',
@@ -30,7 +37,7 @@ export default {
       this.newQuestion.secondAlternative = '';
       this.newQuestion.thirdAlternative = '';
       this.newQuestion.fourthAlternative = '';
-    },}
+    },},
 };
 </script><template>
   <div class="container">
@@ -48,19 +55,11 @@ export default {
           <option value="MultipleQuestion">Question à choix multiples</option>
         </select>
       </div>
-      <div v-if="newQuestion.type === 'SimpleQuestion'" class="form-group">
+      <div class="form-group">
         <label for="firstAlternative">Première alternative:</label>
         <input type="text" class="form-control" id="firstAlternative" v-model="newQuestion.firstAlternative" />
       </div>
-      <div v-if="newQuestion.type === 'SimpleQuestion'" class="form-group">
-        <label for="secondAlternative">Deuxième alternative:</label>
-        <input type="text" class="form-control" id="secondAlternative" v-model="newQuestion.secondAlternative" />
-      </div>
-      <div v-if="newQuestion.type === 'MultipleQuestion'" class="form-group">
-        <label for="firstAlternative">Première alternative:</label>
-        <input type="text" class="form-control" id="firstAlternative" v-model="newQuestion.firstAlternative" />
-      </div>
-      <div v-if="newQuestion.type === 'MultipleQuestion'" class="form-group">
+      <div class="form-group">
         <label for="secondAlternative">Deuxième alternative:</label>
         <input type="text" class="form-control" id="secondAlternative" v-model="newQuestion.secondAlternative" />
 </div>
