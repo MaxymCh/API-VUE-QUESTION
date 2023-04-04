@@ -45,7 +45,7 @@ def create_question():
         abort(400)
     type_question = request.json['type']
     title_question = request.json['title']
-    id_questionnaire = request.json['idQuestionnaire']
+    id_questionnaire = int(request.json['idQuestionnaire'])
     print(type_question)
     match(type_question):
         case("SimpleQuestion"):
