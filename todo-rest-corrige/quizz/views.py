@@ -29,6 +29,11 @@ def get_question(quest_id):
     q = Question.query.get(quest_id)
     return q.to_json()
 
+@app.route('/quiz/api/v1.0/question/reponse/<int:question_id>', methods = ['GET'])
+def get_question_reponse(question_id):
+    q = Question.query.get(question_id)
+    return jsonify(q.json_content())
+
 @app.route('/quiz/api/v1.0/question/<int:quest_id>', methods = ['DELETE'])
 def delete_question(quest_id):
     q = Question.query.get(quest_id)
@@ -73,6 +78,15 @@ def update_question(quest_id):
     
     q.title = request.json.get('title', q.title)
     q.question_type = request.json.get('type', q.question_type)
+    match(q.question_type):
+        case("SimpleQuestion"):
+            q.firstAlternative = request.json.get('firstAlternative', q.firstAlternative)
+            q.secondAlternative = request.json.get('secondAlternative', q.secondAlternative)
+        case("MultipleQuestion"):
+            q.firstAlternative = request.json.get('firstAlternative', q.firstAlternative)
+            q.secondAlternative = request.json.get('secondAlternative', q.secondAlternative)
+            q.thirdAlternative = request.json.get('thirdAlternative', q.thirdAlternative)
+            q.fourthAlternative = request.json.get('fourthAlternative', q.fourthAlternative)
     db.session.commit()
     return jsonify( { 'question': q.to_json() } ),201
 

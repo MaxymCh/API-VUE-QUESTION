@@ -60,11 +60,11 @@ export default {
           this.questions = await response.json();
         }
     },
-    mounted(){
-      const route = useRoute();
-      this.id = route.params.idQuestionnaire
-      this.fetchquestions(this.id);
-    }
+  mounted(){
+    const route = useRoute();
+    this.id = route.params.idQuestionnaire
+    this.fetchquestions(this.id);
+  }
 }
 
 /*
