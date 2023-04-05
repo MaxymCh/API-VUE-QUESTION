@@ -12,26 +12,35 @@ export default {
   },
   methods: {
     async edit() {
-      var data_body = {
-          'title': this.question.title,
-          'type': this.question.question_type,
-          'firstAlternative': this.reponses_question.firstAlternative,
-          'secondAlternative': this.reponses_question.secondAlternative
-        }
-      if(this.question.question_type == "MultipleQuestion"){
+    var data_body = {
+        'idQuestionnaire': this.question.questionnaire_id,
+        'title': this.question.title,
+        'type': this.question.question_type,
+        'firstAlternative': this.reponses_question.firstAlternative,
+        'secondAlternative': this.reponses_question.secondAlternative
+    }
+    if(this.question.question_type == "MultipleQuestion"){
         data_body.thirdAlternative = this.reponses_question.thirdAlternative 
         data_body.fourthAlternative = this.reponses_question.fourthAlternative
-      }
-       
-      const requestOptions = {
+    }
+    this.$router.push({ name: 'QuestionList', params: { idQuestionnaire: this.question.questionnaire_id } });
+
+    const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        
         body: JSON.stringify(data_body),
-      };
-      const response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/question/${this.question.id}`, requestOptions).then(response => response.json());
-
-    },
+    };
+    const response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/question/${this.question.id}`, requestOptions).then(response => response.json());
+    
+    // Redirection avec paramètres
+    this.$router.push({ 
+        name: 'QuestionList', 
+        params: { 
+            idQuestionnaire: this.question.questionnaire_id 
+        } 
+    });
+}
+,
     async fetchquestion(idQuestion){
           let response = await fetch(`http://127.0.0.1:5000/quiz/api/v1.0/question/${idQuestion}`);
           this.question = await response.json();
@@ -52,7 +61,8 @@ mounted(){
 </script><template>
   <div class="container">
     <h2>{{ title }}</h2>
-
+      {{ question.questionnaire_id }}
+      {{ question.question_type }}
     <form @submit.prevent="edit">
       <div class="form-group">
         <label for="title">Titre</label>

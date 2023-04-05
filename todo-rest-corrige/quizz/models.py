@@ -40,6 +40,7 @@ class Question(db.Model):
 
     def to_json(self):
         json_quest = {
+            'questionnaire_id': self.questionnaire_id,
             'id': self.id,
             'url': url_for('get_question',
              quest_id=self.id, _external=True),

@@ -23,21 +23,25 @@ export default {
   },
   methods: {
     async add() {
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.newQuestion),
-      };
-      const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/question/', requestOptions);
-      const data = await response.json();
-      this.questions.push(data.questionnaire);
-      this.newQuestion.title = '';
-      this.newQuestion.type = 'SimpleQuestion';
-      this.newQuestion.firstAlternative = '';
-      this.newQuestion.secondAlternative = '';
-      this.newQuestion.thirdAlternative = '';
-      this.newQuestion.fourthAlternative = '';
-    },},
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(this.newQuestion),
+  };
+  const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/question/', requestOptions);
+  const data = await response.json();
+  this.questions.push(data.questionnaire);
+  this.newQuestion.title = '';
+  this.newQuestion.type = 'SimpleQuestion';
+  this.newQuestion.firstAlternative = '';
+  this.newQuestion.secondAlternative = '';
+  this.newQuestion.thirdAlternative = '';
+  this.newQuestion.fourthAlternative = '';
+
+  // Navigate back to the questions list
+  this.$router.push({ name: 'QuestionList', params: { idQuestionnaire: this.idQuestionnaire }});
+},
+  }
 };
 </script><template>
   <div class="container">

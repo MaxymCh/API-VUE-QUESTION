@@ -7,7 +7,7 @@ import CreateQuestionnaire from "./components/CreateQuestionnaire.vue";
 import EditQuestionnaire from "./components/EditQuestionnaire.vue";
 
 const routes = [
-  { path: "/questions/:idQuestionnaire", component: QuestionList },
+  { path: "/questions/:idQuestionnaire", name:'QuestionList', component: QuestionList},
   { path: "/", component: QuestionnaireList },
   { path: "/question/edit/:idQuestion", component: EditQuestion },
   { path: "/questionnaire/edit/:id", component: EditQuestionnaire },

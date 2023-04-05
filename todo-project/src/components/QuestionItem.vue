@@ -33,7 +33,7 @@ export default {
 
         </span>
         <span class="input-group-btn">
-          <router-link :to="'/question/edit/' + question.id" class="btn btn-primary">Editer la question</router-link>
+          <router-link :to="'/question/edit/' + question.id"  class="btn btn-primary">Editer la question</router-link>
 
 
         </span>
