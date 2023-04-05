@@ -11,17 +11,17 @@ export default {
   },
   methods: {
     async addQuestionnaire() {
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.newQuestionnaire),
-      };
-      const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questionnaire/', requestOptions);
-      const data = await response.json();
-      this.questionnaires.push(data.questionnaire);
-      this.newQuestionnaire.name = '';
-    },
-  },
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(this.newQuestionnaire),
+  };
+  const response = await fetch('http://127.0.0.1:5000/quiz/api/v1.0/questionnaire/', requestOptions);
+  const data = await response.json();
+  this.newQuestionnaire.name = '';
+  this.$router.push('/');
+},
+  }
 };
 </script>
 <template>

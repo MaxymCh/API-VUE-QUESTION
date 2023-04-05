@@ -11,9 +11,8 @@ const routes = [
   { path: "/", component: QuestionnaireList },
   { path: "/question/edit/:idQuestion", component: EditQuestion },
   { path: "/questionnaire/edit/:id", component: EditQuestionnaire },
-  { path: "/questionnaires", component: QuestionnaireList },
   { path: '/question/add', name: 'question-add',  component: CreateQuestion,   props: true, },
-  { path: '/questionnaire/add', component: CreateQuestionnaire},
+  { path: '/questionnaire/add', name: 'questionnaire-add', component: CreateQuestionnaire},
 ];
 
 

@@ -22,6 +22,7 @@ export default {
         `http://127.0.0.1:5000/quiz/api/v1.0/questionnaire/${this.questionnaire.id}`,
         requestOptions
       ).then((response) => response.json());
+      this.$router.push('/');
     },
     async fetchQuestionnaire(id) {
       let response = await fetch(
