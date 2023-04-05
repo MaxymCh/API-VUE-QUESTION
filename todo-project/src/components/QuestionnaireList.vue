@@ -69,6 +69,7 @@ export default{
             </ol>
 
         </div>
+        <router-link to="/questionnaire/add" class="btn btn-default">Ajouter un questionnaire</router-link>
       </template>
 
 <style>

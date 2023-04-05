@@ -3,13 +3,17 @@ import QuestionList from "./components/QuestionList.vue";
 import QuestionnaireList from "./components/QuestionnaireList.vue";
 import CreateQuestion from "./components/CreateQuestion.vue";
 import EditQuestion from "./components/EditQuestion.vue";
+import CreateQuestionnaire from "./components/CreateQuestionnaire.vue";
+import EditQuestionnaire from "./components/EditQuestionnaire.vue";
 
 const routes = [
   { path: "/questions/:idQuestionnaire", component: QuestionList },
   { path: "/", component: QuestionnaireList },
   { path: "/question/edit/:idQuestion", component: EditQuestion },
+  { path: "/questionnaire/edit/:id", component: EditQuestionnaire },
   { path: "/questionnaires", component: QuestionnaireList },
   { path: '/question/add', name: 'question-add',  component: CreateQuestion,   props: true, },
+  { path: '/questionnaire/add', component: CreateQuestionnaire},
 ];
 
 

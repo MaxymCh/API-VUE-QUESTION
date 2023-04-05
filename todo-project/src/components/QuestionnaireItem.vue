@@ -23,6 +23,7 @@ export default {
       </label>
       <span>
         <button class="btn btn-danger" @click="suppr()">Supprimer</button>
+        <router-link :to="'/questionnaire/edit/'+questionnaire.id" class="btn btn-primary">Editer le questionnaire</router-link>
         <router-link :to="/questions/+questionnaire.id" class="btn btn-primary">Voir mes questions</router-link>
       </span>
     </div>
