@@ -21,6 +21,7 @@ Installation
 Clonez le référentiel sur votre machine locale :
 
 Lancer l'api avec python3
+pip install flask
 pip install flask_cors
   
 
