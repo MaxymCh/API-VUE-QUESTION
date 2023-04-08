@@ -21,8 +21,17 @@ Installation
 Clonez le référentiel sur votre machine locale :
 
 Lancer l'api avec python3
+
 pip install flask
 pip install flask_cors
+Se placer dans le répertoire quizz puis faire flask runv
+
+Lancer la vue client
+
+Se placer dans todo-project
+
+npm install
+npm run dev
   
 
 Fonctionnalités
