@@ -13,7 +13,7 @@ Il s'agit d'une application simple de gestion de questions construite avec vue j
 
 Prérequis
 ---------
-    * Python3 pour lancer l'api
+    * Python3 et flask pour lancer l'api
     * Vue js
 
 Installation
